@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch me if you can</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        
+        #game-area {
+            width: 80%;
+            height: 80%;
+            border: 2px solid #333;
+            position: relative;
+            background-color: #fff;
+        }
+        
+        #fly {
+            width: 20px;
+            height: 20px;
+            background-image: url('https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvam9iNjgwLTE2Ni1wLWwxZGJ1cTN2LnBuZw.png'); /* Replace with your fly image */
+            background-size: cover;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="game-area">
+        <div id="fly"></div>
+    </div>
+    <script>
+        const fly = document.getElementById('fly');
+const gameArea = document.getElementById('game-area');
+
+function getRandomPosition(element) {
+    const x = Math.random() * (gameArea.clientWidth - element.clientWidth);
+    const y = Math.random() * (gameArea.clientHeight - element.clientHeight);
+    return { x, y };
+}
+
+function moveFly() {
+    const position = getRandomPosition(fly);
+    fly.style.left = `${position.x}px`;
+    fly.style.top = `${position.y}px`;
+}
+
+function distance(x1, y1, x2, y2) {
+    return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
+}
+
+gameArea.addEventListener('mousemove', (e) => {
+    const flyRect = fly.getBoundingClientRect();
+    const flyX = flyRect.left + flyRect.width / 2;
+    const flyY = flyRect.top + flyRect.height / 2;
+    const cursorX = e.clientX;
+    const cursorY = e.clientY;
+    
+    if (distance(flyX, flyY, cursorX, cursorY) < 50) {
+        moveFly();
+    }
+});
+
+    </script>
+</body>
+</html>
