@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav Bar With Brand Name</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+header{
+    background-image:linear-gradient(-45deg, rgb(170, 156, 156), rgba(255, 0, 0, 0.753))
+}
+.navbar{
+    display:flex;
+    font-family:sans-serif;
+    font-size: 18px ;
+    padding: 10px 20px;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+}
+.website-name{
+    font-size: 30px;
+    margin-left: 10px;
+    width: 30%;
+}
+.website-name a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+.website-name a:hover{
+    cursor: pointer;
+    color: lightgoldenrodyellow;
+}
+.links{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 60%;
+
+}
+.nav-list{
+    display:flex;
+    list-style: none;
+    
+}
+.nav-list a{
+    color: rgb(252, 252, 252);
+    text-decoration: none;
+    margin-left: 30px;
+    font-size:20px;    
+}
+.menu-icon{
+    display: none;
+    font-size: 24px;
+    color: black;
+    cursor: pointer;
+    position: absolute;
+    right:20px
+}
+@media(max-width: 800px){
+    .menu-icon{
+        display: block;
+        margin-left: 100px;
+    }
+    .website-name{
+        font-size: 20px;
+        margin-left: 5px;
+        width: 30%;
+    }
+    .website-name a{
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .website-name a:hover{
+        cursor: pointer;
+        color: lightgoldenrodyellow;
+    }
+    .nav-list{
+        display: none ;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: transparent;
+        position:absolute;
+        margin-top: 50px;
+        margin-right: 20px;
+        align-items: flex-start;
+    }
+    .nav-list.active{
+        display: flex;
+    }
+    .nav-list li{
+        margin: 10px 0;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="website-name">
+                <a href="./NavBarWithTitle.html">Sumeet</a>
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="links">
+              
+                <ul class="nav-list" >
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Resume</a></li>
+                </ul>
+               
+            </div>
+        </nav>
+    </header>
+    <script>
+        function toggleMenu(){
+            const navList= document.querySelector('.nav-list');
+            navList.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
